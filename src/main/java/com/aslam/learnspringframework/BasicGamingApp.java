@@ -3,12 +3,16 @@ package com.aslam.learnspringframework;
 import com.aslam.learnspringframework.game.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
+@ComponentScan("com.aslam.learnspringframework.game")
 public class BasicGamingApp {
     public static void main(String[] args) {
 //        try ( ApplicationContext context  = new AnnotationConfigApplicationContext(GamingConfiguration.class)){
         try {
-            ApplicationContext context  = new AnnotationConfigApplicationContext(GamingConfiguration.class);
+            ApplicationContext context  = new AnnotationConfigApplicationContext(BasicGamingApp.class);
             context.getBean(GameRunner.class).run();
         } catch (Exception e){
             System.out.println(e.fillInStackTrace());
